@@ -92,3 +92,7 @@ Pour cette partie de l'exercice, vous allez vous déplacer sur la branche feat/l
 Créez un fichier texte login.txt dans le dossier de cet exercice
 
 pour demander à git de traquer ce fichier, exécutez la commande `git add GIT\login.txt`
+
+Vérifiez que votre fichier est bien traqué avec la commande `git ls-files`
+
+M
