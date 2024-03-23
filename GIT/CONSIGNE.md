@@ -1,98 +1,49 @@
+
 # Versionner son code
 
-Dans cet exercice, nous allons voir comment créer différentes version de son code.
+Dans cet exercice, nous allons apprendre à créer différentes versions de notre code en utilisant Git.
 
-Pour cela nous allons utiliser git.
+## Installation de Git
 
-Dans un un premier temps rendez-vous sur (ce lien)[https://github.com/git-for-windows/git/releases/download/v2.44.0.windows.1/Git-2.44.0-64-bit.exe] Pour télécharger et insaller git
+1. Commencez par télécharger et installer Git depuis [ce lien](https://github.com/git-for-windows/git/releases/download/v2.44.0.windows.1/Git-2.44.0-64-bit.exe).
 
-Une fois que c'est fait vous allez devoir démarrer un invité de commande afin de vérifier son installation avec la commande suivante
+2. Une fois l'installation terminée, ouvrez une invite de commande pour vérifier l'installation avec la commande suivante : `git --version`. Si Git est correctement installé, la version de Git s'affichera.
 
-`git -v`
+Si la version ne s'affiche pas, essayez de redémarrer votre invite de commande ou votre éditeur de code (comme Visual Studio Code). Si le problème persiste, redémarrez votre ordinateur. Ce problème peut survenir car l'invite de commande ou l'éditeur ne reconnaît pas les nouvelles variables d'environnement sans un redémarrage.
 
-Une version de git devrait s'afficher dans la console, si ce n'est pas le cas, vos avez probablement démarré votre console avant d'installer git, vous allez donc essayer de redémarrer votre console, ou si par exemple vous avez lancé la console sur visual studio code, redémarrer celui-ci.
+## Initialisation de Git
 
-Si aucune de ces actions ne fonctionne, redémarrer votre ordinateur.
+1. Dans le dossier racine de votre projet, initialisez Git avec la commande `git init`. Un message devrait confirmer que le dépôt Git a été initialisé avec succès.
 
-Ce problème peut être causé pour une raison en particulier.
+## Création de branches
 
-Lorsque vous exécuter des commande comme git, npm etc... c'est grâce à des variables d'environnement qui pointes vers le dossier d'installation de l'exécutable, et l'invité de commande et/ou les logiciels, ne lisent qu'une fois, au démarrage, les variables d'environnement, c'est pour cela que si le logiciel est intallé après, les variables en question seront inconnues jusqu'a ce que vous redémarrez la console ou le logiciel.
+Git utilise un système de branches pour gérer différentes versions du code. Voici comment créer des branches :
 
-Une fois que vous avez bien pu exécuter la commande `git -v`
+- Pour créer une branche, utilisez `git branch nom_de_la_branche`, par exemple : `git branch feat/login`.
+- Pour lister toutes les branches, tapez `git branch`.
+- Créez les branches suivantes pour l'exercice : `feat/login`, `fix/button-size`, `chore/code-cleaning`, `deps/bootstrap`.
 
-Vous pouvez continuer.
+## Navigation entre les branches
 
-### Initialisation de git
+- Pour naviguer entre les branches, utilisez `git checkout nom_de_la_branche`.
+- Par défaut, vous commencez sur la branche principale nommée `main`.
 
-Avant toute chose, vous devez initialiser git, cette initialisation se fait dans le dossier racine de votre projet.
+## Suivi de fichiers avec Git
 
-Par exemple, pour envoyer ces exercices sur github, j'ai initialisé git dans le dossier "LEARN_HOW_TO_CODE_BY_DIGIOX".
+1. Sur la branche `feat/login`, créez un fichier `login.txt`.
+2. Pour que Git suive ce fichier, utilisez `git add login.txt`.
+3. Pour vérifier que le fichier est suivi, tapez `git ls-files`.
+4. Enregistrez vos modifications avec `git commit -m "feat/login: Ajout du login"`.
 
-Vous avez probablement simplement téléchargé ce dossier, je vous invite donc à faire comme moi avec la commmande `git init`
+## Rendu attendu
 
-Vous devriez voir un message qui indique que le répertoire git à été initialisé avec succès, si ce n'est pas le cas, essayez de résoure le problème par vous même, et si vous n'y arrivez pas, contactez moi.
+Vous devriez avoir 4 branches avec un fichier dans chacune, tous suivis et commités :
 
+- `feat/login` contenant `login.txt`
+- `fix/button-size` contenant `button.txt`
+- `chore/code-cleaning` contenant `clean.txt`
+- `deps/bootstrap` contenant `bootstrap.txt`
 
-### Création de branches
+## Note
 
-Git fonctionne avec un système de branche, pour être plus claire, une branche est égal à une version de votre travail.
-
-![Représentation en image](1_wEYhEjUCn0NSqHwN_oSGDw.png)
-
-Sur l'image vous avez une représentation possible de comment peuvent être nommé vos branches toutefois, au sein d'une entreprise, ce n'est pas tous les jours que vous allez nommer votre branche ainsi.
-
-Souvent, nous nommons la branche de façon à savoir les modifications majeurs qu'elle contien, cette pratique encourage à souvent versionner son code afin de le rendre plus maintenable.
-
-Exemple:
-
-- feat/login
-- fix/button-size
-- chore/code-cleaning
-- deps/bootstrap
-
-
-Dans les exemples suivant nous avons les nommages les plus conventionnels.
-
-feat signifie feature, donc la branche feat/login ajoute une fonctionnalité d'authentification
-
-fix/button-size signifie qu'il y à eu une correciton sur la taille d'un boutton
-
-chore signifie corvée, ont peux donc en déduire que cet branche est essentiellement du nettoyage de code afin que celui-ci soit plus claire.
-
-deps signifie dependencies, cette branche ajoute donc la dépendance bootstrap au projet.
-
-
-Maintenant nous allons voir comment créer chacune de ces branches.
-
-Si nous voulons créer la première branche des exemples nous allons entrer la commande `git branch feat/login`
-
-Afin de vérifier que cette branche à été crée, nous allons simplement exécuter `git branch`.
-
-Faites de même pour les autres branches de l'exemple.
-
-
-### Se déplacer entre les branches
-
-Normalement après avoir initialisé git, une branche main à automatiquement été crée, comme vous ave pu le voir avec la commande `git branch`
-
-C'est la branche sur laquelle vous êtes par défaut et elle représente votre branche principale.
-
-si vous souhaitez vous déplacer sur la branche feat/login, vous allez devoir exécuter `git checkout feat/login`
-
-Testez de naviguer entre les branches.
-
-En exécutant `git branch` vous pouvez visualiser sur quell branche vous êtes actuellement, elle apparrait avec une petite étoile à gauche
-
-![alt text](image.png)
-
-### Traquer des fichiers avec git
-
-Pour cette partie de l'exercice, vous allez vous déplacer sur la branche feat/login
-
-Créez un fichier texte login.txt dans le dossier de cet exercice
-
-pour demander à git de traquer ce fichier, exécutez la commande `git add GIT\login.txt`
-
-Vérifiez que votre fichier est bien traqué avec la commande `git ls-files`
-
-M
+Toutes les modifications apportées aux fichiers seront également sauvegardées par Git.
